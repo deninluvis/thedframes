@@ -1,0 +1,148 @@
+/* ══════════════════════════════════════════
+   frame/film — photos.css  (warm palette)
+   ══════════════════════════════════════════ */
+
+/* ── Photo Grid ── */
+.photo-grid {
+  display:               grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows:        18vw;
+  gap:                   3px;
+  padding:               3px;
+  flex:                  1;
+  background:            var(--oat);
+  animation:             fadeIn var(--dur-slower) var(--ease) 0.1s both;
+}
+
+.photo-item {
+  overflow:   hidden;
+  background: var(--color-bg-card);
+  cursor:     pointer;
+  position:   relative;
+}
+
+/* Editorial spans */
+.photo-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+.photo-item:nth-child(2) { grid-column: span 4; }
+.photo-item:nth-child(3) { grid-column: span 3; }
+.photo-item:nth-child(4) { grid-column: span 4; }
+.photo-item:nth-child(5) { grid-column: span 3; }
+.photo-item:nth-child(6) { grid-column: span 4; grid-row: span 2; }
+.photo-item:nth-child(7) { grid-column: span 4; }
+.photo-item:nth-child(8) { grid-column: span 4; }
+.photo-item:nth-child(9) { grid-column: span 8; }
+
+.photo-item img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease), filter var(--dur-fast);
+}
+
+.photo-item:hover img {
+  transform: scale(1.05);
+  filter:    brightness(0.78);
+}
+
+/* ── Hover Overlay ── */
+.photo-overlay {
+  position:        absolute;
+  inset:           0;
+  background:      linear-gradient(to top, rgba(35,35,35,0.65) 0%, transparent 55%);
+  display:         flex;
+  flex-direction:  column;
+  justify-content: flex-end;
+  padding:         var(--sp-5) var(--sp-6);
+  opacity:         0;
+  transition:      opacity var(--dur-base) var(--ease);
+}
+
+.photo-item:hover .photo-overlay { opacity: 1; }
+
+.po-title {
+  font-size:      var(--fs-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color:          var(--milk);
+}
+
+.po-num {
+  font-size:   var(--fs-xs);
+  color:       rgba(251, 247, 244, 0.5);
+  margin-top:  var(--sp-1);
+}
+
+/* ── Lightbox ── */
+.lightbox {
+  display:         none;
+  position:        fixed;
+  inset:           0;
+  z-index:         var(--z-lightbox);
+  background:      rgba(35, 35, 35, 0.94);
+  align-items:     center;
+  justify-content: center;
+  animation:       fadeIn 0.2s var(--ease) both;
+}
+
+.lightbox.open { display: flex; }
+
+.lb-close {
+  position:       absolute;
+  top:            var(--sp-8);
+  right:          var(--sp-10);
+  font-size:      var(--fs-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color:          var(--oat);
+  cursor:         pointer;
+  border:         none;
+  background:     none;
+  transition:     color var(--dur-fast);
+  font-family:    var(--font-mono);
+}
+
+.lb-close:hover { color: var(--milk); }
+
+.lb-content {
+  width:      80vw;
+  max-width:  1000px;
+  height:     56vw;
+  max-height: 640px;
+  position:   relative;
+  background: var(--mocha);
+}
+
+.lb-content img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+}
+
+.lb-label {
+  position:       absolute;
+  bottom:         var(--sp-4);
+  left:           50%;
+  transform:      translateX(-50%);
+  font-size:      var(--fs-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color:          rgba(251, 247, 244, 0.55);
+  white-space:    nowrap;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .photo-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows:        28vw;
+  }
+  .photo-item:nth-child(1) { grid-column: span 4; grid-row: span 2; }
+  .photo-item:nth-child(2) { grid-column: span 2; }
+  .photo-item:nth-child(3) { grid-column: span 2; }
+  .photo-item:nth-child(4) { grid-column: span 3; }
+  .photo-item:nth-child(5) { grid-column: span 3; }
+  .photo-item:nth-child(6) { grid-column: span 3; grid-row: span 1; }
+  .photo-item:nth-child(7) { grid-column: span 3; }
+  .photo-item:nth-child(8) { grid-column: span 3; }
+  .photo-item:nth-child(9) { grid-column: span 6; }
+}

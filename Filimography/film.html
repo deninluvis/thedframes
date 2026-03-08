@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frame & Film — Film</title>
+  <link rel="stylesheet" href="/shared.css" />
+  <link rel="stylesheet" href="/Filimography/film.css" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/index.html">D<span>-</span>frames</a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/Photography/photos.html">Photos</a></li>
+    <li><a href="/Filimography/film.html" class="active">Film</a></li>
+    <li><a href="/About/about.html">About</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <p class="ph-tag">Videography</p>
+      <h1><strong>Moving</strong> images</h1>
+    </div>
+    <p>Short films and travel reels. Replace with YouTube or Vimeo embeds when you're ready to publish.</p>
+  </div>
+</div>
+
+<div class="film-layout">
+
+  <!-- Card 1 — thumbnail with play overlay, opens modal -->
+  <div class="film-card" data-video-id="dQw4w9WgXcQ" data-title="Between the Peaks">
+    <div class="film-thumb">
+      <img src="https://picsum.photos/seed/peaks10/800/450" alt="Between the Peaks" loading="lazy" />
+      <div class="film-thumb-overlay"></div>
+      <div class="play-ring"></div>
+      <span class="film-ts">3:42</span>
+    </div>
+    <p class="film-label">Travel</p>
+    <h3 class="film-title">Between the Peaks</h3>
+    <p class="film-desc">A weekend in the mountains — fog, silence, and open roads captured in slow motion.</p>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="film-card" data-video-id="M7lc1UVf-VE" data-title="City at Rest">
+    <div class="film-thumb">
+      <img src="https://picsum.photos/seed/city20/800/450" alt="City at Rest" loading="lazy" />
+      <div class="film-thumb-overlay"></div>
+      <div class="play-ring"></div>
+      <span class="film-ts">1:58</span>
+    </div>
+    <p class="film-label">Urban</p>
+    <h3 class="film-title">City at Rest</h3>
+    <p class="film-desc">Early morning streets before the city wakes. Long exposures and slow movement.</p>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="film-card" data-video-id="ScMzIvxBSi4" data-title="Shoreline">
+    <div class="film-thumb">
+      <img src="https://picsum.photos/seed/shore30/800/450" alt="Shoreline" loading="lazy" />
+      <div class="film-thumb-overlay"></div>
+      <div class="play-ring"></div>
+      <span class="film-ts">5:10</span>
+    </div>
+    <p class="film-label">Nature</p>
+    <h3 class="film-title">Shoreline</h3>
+    <p class="film-desc">An afternoon at the coast — tide, sand, and fading light at the edge of the day.</p>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="film-card" data-video-id="YR5ApYxkU-U" data-title="Everyday">
+    <div class="film-thumb">
+      <img src="https://picsum.photos/seed/daily40/800/450" alt="Everyday" loading="lazy" />
+      <div class="film-thumb-overlay"></div>
+      <div class="play-ring"></div>
+      <span class="film-ts">2:30</span>
+    </div>
+    <p class="film-label">Personal</p>
+    <h3 class="film-title">Everyday</h3>
+    <p class="film-desc">A regular day documented honestly — coffee, light, laughter, nothing extraordinary.</p>
+  </div>
+
+</div>
+
+<!-- Video Modal -->
+<div class="video-modal" id="videoModal">
+  <div class="vm-backdrop" id="vmBackdrop"></div>
+  <div class="vm-inner">
+    <button class="vm-close" id="vmClose">close ✕</button>
+    <div class="vm-embed" id="vmEmbed"></div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2025 D-frames</span>
+  <a href="/About/about.html">Get in touch</a>
+</footer>
+
+<script src="/Filimography/film.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+/* ══════════════════════════════════════════
+   frame/film — about.css  (warm palette)
+   ══════════════════════════════════════════ */
+
+/* ── Split Layout ── */
+.about-layout {
+  flex:                  1;
+  display:               grid;
+  grid-template-columns: 40% 60%;
+  min-height:            calc(100vh - 60px);
+  padding-top:           var(--sp-nav);
+  animation:             fadeIn var(--dur-slower) var(--ease) both;
+}
+
+/* ── Left Photo Panel ── */
+.about-left {
+  position:   relative;
+  overflow:   hidden;
+  background: var(--oat);
+}
+
+.about-left img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.about-left-overlay {
+  position:   absolute;
+  inset:      0;
+  background: linear-gradient(
+    to bottom,
+    rgba(251, 247, 244, 0.08) 0%,
+    rgba(35, 35, 35, 0.35) 100%
+  );
+}
+
+.about-index-text {
+  position:       absolute;
+  bottom:         var(--sp-10);
+  left:           var(--sp-8);
+  font-size:      var(--fs-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color:          rgba(251, 247, 244, 0.65);
+  line-height:    var(--leading-relaxed);
+  z-index:        2;
+}
+
+/* ── Right Content Panel ── */
+.about-right {
+  padding:         calc(var(--sp-nav) + var(--sp-12)) 3.5rem var(--sp-20) var(--sp-12);
+  display:         flex;
+  flex-direction:  column;
+  justify-content: center;
+  background:      var(--color-bg);
+}
+
+.about-tag {
+  font-size:      var(--fs-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color:          var(--taupe);
+  margin-bottom:  var(--sp-8);
+  display:        flex;
+  align-items:    center;
+  gap:            var(--sp-3);
+}
+
+.about-tag::before {
+  content:    '';
+  width:      2rem;
+  height:     1px;
+  background: var(--taupe);
+}
+
+.about-title {
+  font-family:    var(--font-display);
+  font-size:      clamp(2.2rem, 3.5vw, 3.4rem);
+  font-weight:    var(--fw-thin);
+  letter-spacing: var(--tracking-tight);
+  line-height:    var(--leading-snug);
+  color:          var(--charcoal);
+  margin-bottom:  var(--sp-8);
+}
+
+.about-title strong {
+  font-weight: var(--fw-medium);
+  font-style:  italic;
+}
+
+.about-body {
+  font-size:   var(--fs-sm);
+  color:       var(--color-text-faint);
+  line-height: var(--leading-loose);
+  max-width:   420px;
+}
+
+.about-body p + p { margin-top: var(--sp-5); }
+
+/* ── Team Cards ── */
+.team-grid {
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   1px;
+  margin-top:            var(--sp-12);
+  border:                1px solid var(--color-divider);
+  background:            var(--color-divider);
+}
+
+.team-card {
+  padding:    var(--sp-8);
+  background: var(--color-bg);
+  transition: background var(--dur-fast);
+}
+
+.team-card:hover { background: var(--color-surface); }
+
+.team-portrait {
+  width:         60px;
+  height:        60px;
+  border-radius: 50%;
+  overflow:      hidden;
+  margin-bottom: var(--sp-5);
+  border:        2px solid var(--oat);
+}
+
+.team-portrait img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+}
+
+.team-role {
+  font-size:      var(--fs-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color:          var(--taupe);
+  margin-bottom:  var(--sp-2);
+}
+
+.team-name {
+  font-family:    var(--font-display);
+  font-size:      var(--fs-xl);
+  font-weight:    var(--fw-thin);
+  font-style:     italic;
+  letter-spacing: var(--tracking-normal);
+  color:          var(--charcoal);
+  margin-bottom:  var(--sp-3);
+}
+
+.team-focus {
+  font-size:   var(--fs-sm);
+  color:       var(--color-text-faint);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Contact ── */
+.about-contact {
+  margin-top:  var(--sp-12);
+  padding-top: var(--sp-8);
+  border-top:  1px solid var(--color-divider);
+  display:     flex;
+  align-items: center;
+  gap:         var(--sp-8);
+  flex-wrap:   wrap;
+}
+
+.about-contact p {
+  font-size:      var(--fs-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color:          var(--taupe);
+}
+
+.contact-link {
+  font-family:     var(--font-display);
+  font-size:       var(--fs-lg);
+  font-style:      italic;
+  font-weight:     var(--fw-thin);
+  color:           var(--mocha);
+  text-decoration: none;
+  border-bottom:   1px solid rgba(104, 93, 84, 0.3);
+  padding-bottom:  2px;
+  transition:      color var(--dur-fast), border-color var(--dur-fast);
+}
+
+.contact-link:hover {
+  color:        var(--charcoal);
+  border-color: var(--charcoal);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .about-layout { grid-template-columns: 1fr; }
+  .about-left   { height: 55vw; }
+  .about-right  { padding: var(--sp-10) var(--sp-5) var(--sp-16); }
+  .team-grid    { grid-template-columns: 1fr; }
+}

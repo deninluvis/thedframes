@@ -1,0 +1,187 @@
+/* ══════════════════════════════════════════
+   frame/film — film.css  (warm palette)
+   ══════════════════════════════════════════ */
+
+/* ── Film Grid ── */
+.film-layout {
+  flex:                  1;
+  padding:               var(--sp-12) 3.5rem var(--sp-20);
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   var(--sp-10);
+  animation:             fadeIn var(--dur-slower) var(--ease) 0.1s both;
+}
+
+/* ── Film Card ── */
+.film-card { cursor: pointer; }
+
+.film-thumb {
+  position:      relative;
+  aspect-ratio:  16 / 9;
+  overflow:      hidden;
+  background:    var(--color-bg-card);
+  margin-bottom: var(--sp-5);
+}
+
+.film-thumb img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease), filter var(--dur-fast);
+}
+
+.film-thumb-overlay {
+  position:   absolute;
+  inset:      0;
+  background: linear-gradient(to top, rgba(35,35,35,0.5) 0%, transparent 60%);
+  opacity:    0;
+  transition: opacity var(--dur-fast);
+  z-index:    1;
+}
+
+.film-card:hover .film-thumb img {
+  transform: scale(1.04);
+  filter:    brightness(0.75);
+}
+
+.film-card:hover .film-thumb-overlay { opacity: 1; }
+
+/* ── Play Button ── */
+.play-ring {
+  position:        absolute;
+  top:             50%;
+  left:            50%;
+  transform:       translate(-50%, -50%);
+  width:           52px;
+  height:          52px;
+  border:          1px solid rgba(251, 247, 244, 0.55);
+  border-radius:   50%;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  transition:      transform var(--dur-base) var(--ease),
+                   border-color var(--dur-base),
+                   background var(--dur-base);
+  pointer-events:  none;
+  z-index:         2;
+}
+
+.play-ring::after {
+  content:      '';
+  width:        0;
+  height:       0;
+  border-style: solid;
+  border-width: 7px 0 7px 13px;
+  border-color: transparent transparent transparent rgba(251, 247, 244, 0.9);
+  margin-left:  3px;
+}
+
+.film-card:hover .play-ring {
+  transform:    translate(-50%, -50%) scale(1.12);
+  border-color: var(--milk);
+  background:   rgba(104, 93, 84, 0.25);
+}
+
+/* ── Timestamp ── */
+.film-ts {
+  position:       absolute;
+  bottom:         var(--sp-3);
+  right:          var(--sp-4);
+  font-size:      var(--fs-xs);
+  color:          rgba(251, 247, 244, 0.7);
+  background:     rgba(35, 35, 35, 0.55);
+  padding:        0.2rem 0.5rem;
+  letter-spacing: var(--tracking-mono);
+  z-index:        2;
+}
+
+/* ── Card Text ── */
+.film-label {
+  font-size:      var(--fs-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color:          var(--taupe);
+  margin-bottom:  var(--sp-2);
+}
+
+.film-title {
+  font-family:    var(--font-display);
+  font-size:      var(--fs-xl);
+  font-weight:    var(--fw-thin);
+  font-style:     italic;
+  letter-spacing: var(--tracking-normal);
+  color:          var(--charcoal);
+  margin-bottom:  var(--sp-2);
+}
+
+.film-desc {
+  font-size:   var(--fs-sm);
+  color:       var(--color-text-faint);
+  line-height: var(--leading-loose);
+}
+
+/* ── Video Modal ── */
+.video-modal {
+  display:         none;
+  position:        fixed;
+  inset:           0;
+  z-index:         var(--z-lightbox);
+  align-items:     center;
+  justify-content: center;
+}
+
+.video-modal.open { display: flex; }
+
+.vm-backdrop {
+  position:   absolute;
+  inset:      0;
+  background: rgba(35, 35, 35, 0.92);
+  cursor:     pointer;
+}
+
+.vm-inner {
+  position:  relative;
+  width:     80vw;
+  max-width: 960px;
+  z-index:   1;
+}
+
+.vm-close {
+  position:       absolute;
+  top:            -2.5rem;
+  right:          0;
+  font-size:      var(--fs-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color:          var(--oat);
+  cursor:         pointer;
+  border:         none;
+  background:     none;
+  font-family:    var(--font-mono);
+  transition:     color var(--dur-fast);
+}
+
+.vm-close:hover { color: var(--milk); }
+
+.vm-embed {
+  position:    relative;
+  padding-top: 56.25%; /* 16:9 */
+  background:  var(--charcoal);
+}
+
+.vm-embed iframe {
+  position: absolute;
+  inset:    0;
+  width:    100%;
+  height:   100%;
+  border:   none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .film-layout {
+    grid-template-columns: 1fr;
+    padding:               var(--sp-8) var(--sp-5) var(--sp-12);
+  }
+  .vm-inner { width: 95vw; }
+}
