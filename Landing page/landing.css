@@ -144,6 +144,8 @@ body { position: relative; overflow-x: hidden; }
   position: relative;
 }
 
+.mc:empty { background: var(--color-bg-card); }
+
 .mc img {
   transition: transform var(--dur-slow) var(--ease), filter var(--dur-fast);
 }

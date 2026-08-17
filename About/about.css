@@ -124,6 +124,7 @@
   overflow:      hidden;
   margin-bottom: var(--sp-5);
   border:        2px solid var(--oat);
+  background:    var(--color-bg-card);
 }
 
 .team-portrait img {

@@ -46,6 +46,17 @@
 
 .film-card:hover .film-thumb-overlay { opacity: 1; }
 
+.grid-empty {
+  grid-column:    1 / -1;
+  display:        flex;
+  align-items:    center;
+  justify-content: center;
+  min-height:     40vh;
+  font-size:      var(--fs-sm);
+  letter-spacing: var(--tracking-mono);
+  color:          var(--color-text-faint);
+}
+
 /* ── Play Button ── */
 .play-ring {
   position:        absolute;

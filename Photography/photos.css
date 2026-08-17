@@ -44,6 +44,17 @@
   filter:    brightness(0.78);
 }
 
+.grid-empty {
+  grid-column:    1 / -1;
+  display:        flex;
+  align-items:    center;
+  justify-content: center;
+  min-height:     40vh;
+  font-size:      var(--fs-sm);
+  letter-spacing: var(--tracking-mono);
+  color:          var(--color-text-faint);
+}
+
 /* ── Hover Overlay ── */
 .photo-overlay {
   position:        absolute;

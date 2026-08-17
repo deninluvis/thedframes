@@ -1,5 +1,6 @@
 /* frame/film — photos.js */
 
+const grid     = document.getElementById('photoGrid');
 const lightbox = document.getElementById('lightbox');
 const lbImg    = document.getElementById('lb-img');
 const lbLabel  = document.getElementById('lb-label');
@@ -17,15 +18,40 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 
-document.querySelectorAll('.photo-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const img   = item.querySelector('img');
-    const label = item.dataset.label;
-    // Load a larger version for lightbox
-    const seed  = img.src.match(/seed\/(\w+)\//)?.[1] || 'photo';
-    openLightbox(`https://picsum.photos/seed/${seed}/1200/800`, label);
-  });
-});
+function renderEmpty() {
+  grid.innerHTML = '<p class="grid-empty">No photos yet — check back soon.</p>';
+}
+
+fetch('/content/photos.json')
+  .then(res => res.json())
+  .then(data => {
+    const items = data.items || [];
+
+    if (!items.length) { renderEmpty(); return; }
+
+    items.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'photo-item';
+      el.dataset.label = item.label || '';
+
+      const img = document.createElement('img');
+      img.src = item.image;
+      img.alt = item.alt || item.label || '';
+      img.loading = 'lazy';
+
+      const overlay = document.createElement('div');
+      overlay.className = 'photo-overlay';
+      overlay.innerHTML = `
+        <div class="po-title">${item.label || ''}</div>
+        <div class="po-num">${String(i + 1).padStart(2, '0')} / ${String(items.length).padStart(2, '0')}</div>
+      `;
+
+      el.append(img, overlay);
+      el.addEventListener('click', () => openLightbox(item.image, item.label || ''));
+      grid.appendChild(el);
+    });
+  })
+  .catch(renderEmpty);
 
 lbClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
