@@ -2,8 +2,6 @@ backend:
   name: github
   repo: deninluvis/thedframes
   branch: main
-  base_url: https://thedframes-cms.netlify.app
-  auth_endpoint: auth
 
 media_folder: "uploads"
 public_folder: "/uploads"
