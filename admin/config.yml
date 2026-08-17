@@ -17,7 +17,7 @@ collections:
           - label: "Mosaic Images"
             name: "mosaic"
             widget: "list"
-            hint: "Up to 4 images shown in the homepage mosaic."
+            hint: "Add exactly 4, in order — they fill the mosaic left-to-right, top-to-bottom. Images 1 & 2 (top row) look best as portrait, about 2:3 (e.g. 1000×1500px). Images 3 & 4 (bottom row) look best roughly square, about 1:1 (e.g. 1000×1000px). All images are cropped to fit, so exact size isn't critical — just aim for that orientation."
             max: 4
             fields:
               - { label: "Image", name: "image", widget: "image" }
@@ -74,9 +74,9 @@ collections:
         label: "About Content"
         name: "about"
         fields:
-          - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
+          - { label: "Hero Image", name: "heroImage", widget: "image", required: false, hint: "Portrait orientation works best, about 2:3 (e.g. 1000×1500px). It fills the whole left panel and is cropped to fit." }
           - { label: "Hero Image Alt", name: "heroAlt", widget: "string", required: false }
-          - { label: "Photographer Portrait", name: "photographerPortrait", widget: "image", required: false }
+          - { label: "Photographer Portrait", name: "photographerPortrait", widget: "image", required: false, hint: "Square, 1:1 (e.g. 600×600px) — it's cropped into a circle." }
           - { label: "Photographer Alt", name: "photographerAlt", widget: "string", required: false }
-          - { label: "Videographer Portrait", name: "videographerPortrait", widget: "image", required: false }
+          - { label: "Videographer Portrait", name: "videographerPortrait", widget: "image", required: false, hint: "Square, 1:1 (e.g. 600×600px) — it's cropped into a circle." }
           - { label: "Videographer Alt", name: "videographerAlt", widget: "string", required: false }
