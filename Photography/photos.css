@@ -2,11 +2,11 @@
    frame/film — photos.css  (warm palette)
    ══════════════════════════════════════════ */
 
-/* ── Photo Grid ── */
+/* ── Photo / Project Grid ── */
 .photo-grid {
   display:               grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows:        18vw;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-auto-rows:        320px;
   gap:                   3px;
   padding:               3px;
   flex:                  1;
@@ -14,34 +14,62 @@
   animation:             fadeIn var(--dur-slower) var(--ease) 0.1s both;
 }
 
-.photo-item {
-  overflow:   hidden;
-  background: var(--color-bg-card);
-  cursor:     pointer;
-  position:   relative;
+.photo-item,
+.project-card {
+  overflow:        hidden;
+  background:      var(--color-bg-card);
+  cursor:          pointer;
+  position:        relative;
+  display:         block;
+  text-decoration: none;
+  color:           inherit;
 }
 
-/* Editorial spans */
-.photo-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
-.photo-item:nth-child(2) { grid-column: span 4; }
-.photo-item:nth-child(3) { grid-column: span 3; }
-.photo-item:nth-child(4) { grid-column: span 4; }
-.photo-item:nth-child(5) { grid-column: span 3; }
-.photo-item:nth-child(6) { grid-column: span 4; grid-row: span 2; }
-.photo-item:nth-child(7) { grid-column: span 4; }
-.photo-item:nth-child(8) { grid-column: span 4; }
-.photo-item:nth-child(9) { grid-column: span 8; }
-
-.photo-item img {
+.photo-item img,
+.project-card img {
   width:      100%;
   height:     100%;
   object-fit: cover;
   transition: transform var(--dur-slow) var(--ease), filter var(--dur-fast);
 }
 
-.photo-item:hover img {
+.photo-item:hover img,
+.project-card:hover img {
   transform: scale(1.05);
   filter:    brightness(0.78);
+}
+
+/* ── Gallery Meta (project detail header) ── */
+.gallery-meta {
+  padding: var(--sp-8) 3.5rem var(--sp-4);
+}
+
+.gm-back {
+  font-size:      var(--fs-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color:          var(--taupe);
+  text-decoration: none;
+  transition:     color var(--dur-fast);
+}
+
+.gm-back:hover { color: var(--charcoal); }
+
+.gm-title {
+  font-family:    var(--font-display);
+  font-size:      var(--fs-title);
+  font-weight:    var(--fw-thin);
+  font-style:     italic;
+  color:          var(--charcoal);
+  margin-top:     var(--sp-3);
+}
+
+.gm-desc {
+  font-size:   var(--fs-sm);
+  color:       var(--color-text-faint);
+  max-width:   480px;
+  margin-top:  var(--sp-3);
+  line-height: var(--leading-loose);
 }
 
 .grid-empty {
@@ -144,16 +172,8 @@
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .photo-grid {
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows:        28vw;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-auto-rows:        45vw;
   }
-  .photo-item:nth-child(1) { grid-column: span 4; grid-row: span 2; }
-  .photo-item:nth-child(2) { grid-column: span 2; }
-  .photo-item:nth-child(3) { grid-column: span 2; }
-  .photo-item:nth-child(4) { grid-column: span 3; }
-  .photo-item:nth-child(5) { grid-column: span 3; }
-  .photo-item:nth-child(6) { grid-column: span 3; grid-row: span 1; }
-  .photo-item:nth-child(7) { grid-column: span 3; }
-  .photo-item:nth-child(8) { grid-column: span 3; }
-  .photo-item:nth-child(9) { grid-column: span 6; }
+  .gallery-meta { padding: var(--sp-6) var(--sp-5) var(--sp-3); }
 }

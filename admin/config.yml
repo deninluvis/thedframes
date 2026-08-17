@@ -30,13 +30,23 @@ collections:
         label: "Photo Gallery"
         name: "photos"
         fields:
-          - label: "Photos"
-            name: "items"
+          - label: "Projects"
+            name: "projects"
             widget: "list"
+            summary: "{{title}}"
             fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - { label: "Image", name: "image", widget: "image" }
-              - { label: "Alt Text", name: "alt", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Slug", name: "slug", widget: "string", hint: "Used in the URL, e.g. sarah-and-tom-wedding — lowercase, no spaces." }
+              - { label: "Cover Image", name: "coverImage", widget: "image" }
+              - { label: "Cover Alt Text", name: "coverAlt", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - label: "Photos"
+                name: "photos"
+                widget: "list"
+                fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Label", name: "label", widget: "string", required: false }
+                  - { label: "Alt Text", name: "alt", widget: "string", required: false }
 
   - name: "film"
     label: "Film"
