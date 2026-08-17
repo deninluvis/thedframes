@@ -1,8 +1,8 @@
 {
   "heroImage": "",
   "heroAlt": "Photography and videography",
-  "photographerPortrait": "",
-  "photographerAlt": "Photographer portrait",
+  "photographerPortrait": "/uploads/desktop.jpg",
+  "photographerAlt": "Denin's portrait",
   "videographerPortrait": "",
   "videographerAlt": "Videographer portrait"
 }
