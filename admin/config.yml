@@ -35,7 +35,7 @@ collections:
             name: "roleLine"
             widget: "string"
             required: false
-            hint: "Small orange line above \"Amal Davis\", e.g. \"Photographer & filmmaker · Scarborough, Ontario\". Leave empty to hide it."
+            hint: "Small white line above \"Amal Davis\", e.g. \"Photographer & filmmaker · Scarborough, Ontario\". Leave empty to hide it."
           - label: "Tagline"
             name: "tagline"
             widget: "string"

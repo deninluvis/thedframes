@@ -12,8 +12,7 @@
     if (portrait) {
       slot.appendChild(el('img', { src: portrait, alt: text(about.portraitAlt) || 'Amal Davis' }));
       slot.hidden = false;
-    } else {
-      grid.classList.add('no-portrait');
+      grid.classList.remove('no-portrait');   // the page starts text-only so nothing jumps
     }
 
     /* The first sentence of the headline takes the accent colour. */
@@ -33,7 +32,6 @@
       return el('p', { textContent: p });
     }));
   }).catch(function () {
-    grid.classList.add('no-portrait');
     document.getElementById('aboutHeadline').hidden = true;
     DF.showMessage(bio, DF.LOAD_ERROR);
   });

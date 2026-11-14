@@ -54,6 +54,13 @@
       container.replaceChildren(DF.el('p', { className: 'empty-note', textContent: text }));
     },
 
+    /* The real entries of a CMS list: blank or malformed rows are dropped. */
+    list: function (value) {
+      return (Array.isArray(value) ? value : []).filter(function (item) {
+        return item && typeof item === 'object' && !Array.isArray(item);
+      });
+    },
+
     /* Trimmed string, or '' for anything that is not a string. */
     text: function (value) {
       return typeof value === 'string' ? value.trim() : '';

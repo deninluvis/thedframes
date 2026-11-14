@@ -5,8 +5,17 @@
 
   var el = DF.el, text = DF.text;
 
+  /* The address of a project's gallery. A project whose web address name is
+     empty, or already used by an earlier project, also carries its position
+     so that its card still opens its own gallery. */
+  function projectHref(projects, i) {
+    var slug = text(projects[i].slug);
+    var clash = !slug || projects.slice(0, i).some(function (p) { return text(p.slug) === slug; });
+    return '/photos.html?project=' + encodeURIComponent(slug) + (clash ? '&n=' + i : '');
+  }
+
   /* A photo project: wide thumbnail, title, "place · date". */
-  function projectCard(project) {
+  function projectCard(project, href) {
     project = project || {};
     var title = text(project.title);
     var cover = text(project.coverImage);
@@ -17,7 +26,7 @@
       pic.appendChild(el('img', { src: cover, alt: text(project.coverAlt) || title, loading: 'lazy' }));
     }
 
-    return el('a', { className: 'still', href: '/photos.html?project=' + encodeURIComponent(text(project.slug)) },
+    return el('a', { className: 'still', href: href || '/photos.html?project=' + encodeURIComponent(text(project.slug)) },
       pic,
       el('div', { className: 'cap' },
         el('strong', { textContent: title }),
@@ -33,7 +42,8 @@
     var length = text(item.timestamp);
     var meta = DF.metaLine(item.category, item.year);
     var description = text(item.description);
-    var playable = DF.isYouTubeId(item.videoId);
+    var videoId = text(item.videoId);          // tolerate spaces typed around the ID
+    var playable = DF.isYouTubeId(videoId);
 
     var pic = playable
       ? el('button', { type: 'button', className: 'pic', 'aria-label': 'Play film: ' + title })
@@ -43,7 +53,7 @@
     if (length) pic.appendChild(el('span', { className: 'tc', textContent: length }));
     if (playable) {
       pic.appendChild(el('span', { className: 'play', 'aria-hidden': 'true' }, el('i', null, '▶'), 'Play film'));
-      pic.addEventListener('click', function () { openVideo(item.videoId, title, pic); });
+      pic.addEventListener('click', function () { openVideo(videoId, title, pic); });
     }
 
     return el('div', { className: 'film' },
@@ -100,5 +110,11 @@
     overlay.querySelector('.btn-close').focus();
   }
 
-  window.DFMedia = { projectCard: projectCard, filmCard: filmCard, openVideo: openVideo };
+  window.DFMedia = {
+    projectCard: projectCard,
+    projectHref: projectHref,
+    filmCard: filmCard,
+    openVideo: openVideo,
+    setBackgroundInert: setBackgroundInert
+  };
 })();

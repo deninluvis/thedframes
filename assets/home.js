@@ -38,15 +38,18 @@
 
   /* Fill a section with the first `count` items, or a quiet message. */
   function fill(container, items, count, build, wrap) {
-    items = (Array.isArray(items) ? items : []).slice(0, count);
+    var all = DF.list(items);
+    items = all.slice(0, count);
     if (!items.length) { DF.showMessage(container, DF.EMPTY); return; }
     container.replaceChildren();
-    wrap(container, items.map(build));
+    wrap(container, items.map(function (item, i) { return build(item, i, all); }));
   }
 
   var stills = document.getElementById('homeStills');
   DF.loadJSON('/content/photos.json').then(function (data) {
-    fill(stills, data.projects, 3, DFMedia.projectCard, function (box, cards) {
+    fill(stills, data.projects, 3, function (project, i, all) {
+      return DFMedia.projectCard(project, DFMedia.projectHref(all, i));
+    }, function (box, cards) {
       box.appendChild(cards[0]);              // first project runs full width
       if (cards.length > 1) {
         var row = DF.el('div', { className: 'stills two' });
@@ -58,7 +61,7 @@
 
   var films = document.getElementById('homeFilms');
   DF.loadJSON('/content/film.json').then(function (data) {
-    fill(films, data.items, 2, DFMedia.filmCard, function (box, cards) {
+    fill(films, data.items, 2, function (item) { return DFMedia.filmCard(item); }, function (box, cards) {
       cards.forEach(function (card) { box.appendChild(card); });
     });
   }).catch(function () { DF.showMessage(films, DF.LOAD_ERROR); });
