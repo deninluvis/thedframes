@@ -357,9 +357,11 @@ body.locked { overflow: hidden; }
 .about-grid.no-portrait { grid-template-columns: minmax(0, 1fr); max-width: 60rem; }
 .portrait { aspect-ratio: 4 / 5; background: var(--surface); overflow: hidden; }
 .portrait img { width: 100%; height: 100%; object-fit: cover; }
+.about-text { container-type: inline-size; min-width: 0; }
+/* Sized from the column width so the longest word of the default headline fits on one line. */
 .about-h {
   font-family: var(--f-title);
-  font-size: clamp(2rem, 4.6vw, 4.2rem);
+  font-size: clamp(1.2rem, 6.4cqi, 4.2rem);
   font-weight: 800;
   letter-spacing: -.035em;
   text-transform: uppercase;
@@ -405,7 +407,7 @@ body.locked { overflow: hidden; }
 .credit .meta { color: var(--soft); margin-bottom: .5rem; }
 .credit > div:last-child {
   font-family: var(--f-title);
-  font-size: clamp(1.1rem, 2.6vw, 2rem);
+  font-size: clamp(.85rem, 3.6vw, 2rem);
   font-weight: 800;
   letter-spacing: -.02em;
   text-transform: uppercase;
