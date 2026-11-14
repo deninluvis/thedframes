@@ -1,8 +1,6 @@
 {
-  "heroImage": "",
-  "heroAlt": "Photography and videography",
-  "photographerPortrait": "/uploads/desktop.jpg",
-  "photographerAlt": "Denin's portrait",
-  "videographerPortrait": "",
-  "videographerAlt": "Videographer portrait"
+  "portrait": "",
+  "portraitAlt": "",
+  "headline": "Photographer by passion. Engineer by profession.",
+  "bio": "I'm Amal, based in Scarborough, Ontario. By day I work as an engineer. The rest of the time, there's a camera in my hand.\n\nWhat keeps me going is simple: a love for the craft, and a wife who backs every early start and every late edit.\n\nI photograph and film because moments pass quickly, and the precious, beautiful ones deserve to be kept."
 }
