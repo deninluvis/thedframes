@@ -57,6 +57,12 @@
     /* Trimmed string, or '' for anything that is not a string. */
     text: function (value) {
       return typeof value === 'string' ? value.trim() : '';
+    },
+
+    /* A web link, or '' unless it starts with http:// or https://. */
+    link: function (value) {
+      value = DF.text(value);
+      return /^https?:\/\//i.test(value) ? value : '';
     }
   };
 
@@ -93,8 +99,8 @@
         DF.el('div', null, DF.el('a', { href: 'mailto:' + email, textContent: email }))));
     }
 
-    var instagram = DF.text(site.instagram);
-    var youtube = DF.text(site.youtube);
+    var instagram = DF.link(site.instagram);
+    var youtube = DF.link(site.youtube);
     if (instagram || youtube) {
       var links = DF.el('div');
       if (instagram) links.appendChild(external('Instagram', instagram));

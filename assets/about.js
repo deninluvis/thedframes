@@ -41,7 +41,7 @@
   DF.site.then(function (site) {
     if (!site) return;
     var hello = document.getElementById('aboutHello');
-    var email = text(site.email), instagram = text(site.instagram), youtube = text(site.youtube);
+    var email = text(site.email), instagram = DF.link(site.instagram), youtube = DF.link(site.youtube);
     if (email) hello.appendChild(el('a', { className: 'mail', href: 'mailto:' + email, textContent: email }));
     if (instagram) hello.appendChild(el('a', { className: 'link', href: instagram, target: '_blank', rel: 'noopener', textContent: 'Instagram ↗' }));
     if (youtube) hello.appendChild(el('a', { className: 'link', href: youtube, target: '_blank', rel: 'noopener', textContent: 'YouTube ↗' }));
