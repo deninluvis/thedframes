@@ -21,7 +21,7 @@
       var key;
       for (key in (props || {})) {
         if (props[key] === undefined || props[key] === null) continue;
-        if (key.indexOf('data-') === 0 || key.indexOf('aria-') === 0) node.setAttribute(key, props[key]);
+        if (key === 'role' || key.indexOf('data-') === 0 || key.indexOf('aria-') === 0) node.setAttribute(key, props[key]);
         else node[key] = props[key];
       }
       for (var i = 2; i < arguments.length; i++) {

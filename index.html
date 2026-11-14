@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home — D-frames</title>
+  <meta name="description" content="Photographs and films by Amal Davis." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="D-frames" />
+  <meta property="og:title" content="Amal Davis — D-frames" />
+  <meta property="og:description" content="Photographs and films by Amal Davis." />
+  <meta property="og:image" content="https://thedframes.com/assets/hero-stock.jpg" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Mono&family=Syne:wght@600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+</head>
+<body data-page="home">
+
+<nav class="site-nav" aria-label="Main">
+  <a class="nav-logo" href="/">D-frames</a>
+  <ul>
+    <li><a href="/photos.html" data-nav="photos">Photos</a></li>
+    <li><a href="/film.html" data-nav="film">Film</a></li>
+    <li><a href="/about.html" data-nav="about">About</a></li>
+  </ul>
+</nav>
+
+<main>
+  <header class="hero">
+    <div class="bar"></div>
+    <div class="frame">
+      <img id="heroImg" src="/assets/hero-stock.jpg" alt="Mountains under a night sky (stock photo)" />
+      <div class="title-wrap">
+        <p class="meta" id="heroRole" hidden></p>
+        <h1>Amal Davis</h1>
+      </div>
+      <span class="img-note" id="heroNote">Stock photo</span>
+    </div>
+    <div class="bar bottom"><p class="subtitle" id="heroTagline" hidden></p></div>
+  </header>
+
+  <section class="section" id="stills">
+    <div class="sec-head">
+      <div><p class="meta">Part one — Photography</p><h2>Stills</h2></div>
+      <a class="link" href="/photos.html">All photo projects →</a>
+    </div>
+    <div class="stills" id="homeStills"></div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="sec-head">
+      <div><p class="meta">Part two — Film</p><h2>Features</h2></div>
+      <a class="link" href="/film.html">All films →</a>
+    </div>
+    <div class="films" id="homeFilms"></div>
+  </section>
+</main>
+
+<footer class="credits" id="credits"></footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/media.js"></script>
+<script src="/assets/home.js"></script>
+</body>
+</html>
