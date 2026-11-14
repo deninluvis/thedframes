@@ -25,12 +25,12 @@ collections:
             name: "heroTitle"
             widget: "string"
             required: false
-            hint: "Small faded text at the bottom right of the opening image, e.g. \"First light, Bluffers Park\". Only shown when you have uploaded your own image. Leave empty to show nothing."
+            hint: "Small faded text at the bottom right of the opening image, e.g. \"First light, Bluffers Park\". Only shown when you have uploaded your own image. Keep it short: it stays on one line and is cut off with \"…\" if it does not fit. Leave empty to show nothing."
           - label: "Opening Image Description"
             name: "heroAlt"
             widget: "string"
             required: false
-            hint: "One sentence describing the image for visitors using a screen reader, e.g. \"Sunrise over a lake\". Not visible on the page."
+            hint: "One sentence describing your opening image for visitors using a screen reader, e.g. \"Sunrise over a lake\". Not visible on the page. If empty, the Opening Image Title is used."
           - label: "Line Above Your Name"
             name: "roleLine"
             widget: "string"
@@ -100,7 +100,7 @@ collections:
                   - label: "Image"
                     name: "image"
                     widget: "image"
-                    hint: "The photo itself."
+                    hint: "One photo for this project's gallery. Shown uncropped in the gallery and full screen when a visitor clicks it. A row without an image is skipped."
                   - label: "Caption"
                     name: "label"
                     widget: "string"
@@ -130,12 +130,12 @@ collections:
               - label: "Title"
                 name: "title"
                 widget: "string"
-                hint: "The film's name, e.g. \"Still water\"."
+                hint: "The film's name, shown under its thumbnail on the Film page and the home page, e.g. \"Still water\"."
               - label: "Category"
                 name: "category"
                 widget: "string"
                 required: false
-                hint: "A short label shown under the title, e.g. \"Travel\" or \"Short film\". Leave empty to hide it."
+                hint: "A short label shown next to the title, e.g. \"Short film\" or \"Reel\". Leave empty to hide it."
               - label: "Year"
                 name: "year"
                 widget: "string"
@@ -155,7 +155,7 @@ collections:
                 name: "videoId"
                 widget: "string"
                 pattern: ["^[A-Za-z0-9_-]{11}$", "A YouTube ID is exactly 11 characters"]
-                hint: "The 11 characters after \"v=\" in the YouTube link. For youtube.com/watch?v=dQw4w9WgXcQ enter dQw4w9WgXcQ. Without a valid ID the film is listed but cannot be played."
+                hint: "The 11 characters after \"v=\" in the film's YouTube link. For youtube.com/watch?v=dQw4w9WgXcQ enter dQw4w9WgXcQ. Enter only the ID, not the whole link. This is what plays when a visitor clicks the thumbnail."
               - label: "Thumbnail"
                 name: "thumbnail"
                 widget: "image"
@@ -189,12 +189,12 @@ collections:
             name: "headline"
             widget: "string"
             required: false
-            hint: "The large heading, e.g. \"Photographer by passion. Engineer by profession.\" The first sentence is shown in orange."
+            hint: "The large heading at the top of the About page, e.g. \"Photographer by passion. Engineer by profession.\" When it has two sentences, the first is shown in orange. Leave empty to hide the heading."
           - label: "Bio"
             name: "bio"
             widget: "text"
             required: false
-            hint: "Your story, in your own words. Leave a blank line between paragraphs."
+            hint: "Your story, shown under the headline on the About page, e.g. \"I'm Amal, based in Scarborough, Ontario…\". Leave a blank line between paragraphs. Leave empty to show no text."
 
   # ───────────────────────── Site settings ─────────────────────────
   - name: "site"

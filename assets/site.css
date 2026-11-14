@@ -116,7 +116,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.4), rgba(0,0,0,0) 40%, rgba(0,0,0,.7));
+  background: linear-gradient(180deg, rgba(0,0,0,.4), rgba(0,0,0,0) 32%, rgba(0,0,0,.78));
   pointer-events: none;
 }
 .title-wrap {
@@ -128,7 +128,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   justify-content: flex-end;
   padding: 0 var(--gutter) 2.2rem;
 }
-.title-wrap .meta { color: var(--accent); margin-bottom: 1.2rem; animation: rise .8s .15s var(--ease) both; }
+.title-wrap .meta { color: var(--accent); margin-bottom: 1.2rem; text-shadow: 0 1px 10px rgba(0,0,0,.85), 0 0 2px rgba(0,0,0,.6); animation: rise .8s .15s var(--ease) both; }
 .hero h1 {
   font-family: var(--f-title);
   font-size: clamp(2.2rem, 10.5vw, 10.5rem);
@@ -147,6 +147,10 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   bottom: .9rem;
   z-index: 4;
   max-width: 60%;
+  /* Always one line, so a long title can never climb over the name. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   text-align: right;
   font-family: var(--f-meta);
   font-size: .66rem;

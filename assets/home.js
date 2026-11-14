@@ -11,22 +11,30 @@
     node.hidden = !value;
   }
 
-  /* Opening frame: the bundled stock photo until an image is uploaded in the CMS. */
+  /* Opening frame. The image is chosen here, not in the HTML, so visitors
+     never download or glimpse the stock photo once a real one is uploaded. */
+  var heroImg = document.getElementById('heroImg');
+
+  function useStock() {
+    heroImg.onerror = null;
+    heroImg.src = '/assets/hero-stock.jpg';
+    heroImg.alt = 'Mountains under a night sky (stock photo)';
+    setLine('heroNote', 'Stock photo');
+  }
+
   DF.loadJSON('/content/home.json').then(function (home) {
     setLine('heroRole', home.roleLine);
     setLine('heroTagline', home.tagline);
 
     var image = text(home.heroImage);
-    if (!image) return;                       // keep the stock photo and its note
+    if (!image) { useStock(); return; }
 
     var title = text(home.heroTitle);
-    var img = document.getElementById('heroImg');
-    img.src = image;
-    img.alt = text(home.heroAlt) || title;
-    setLine('heroNote', title);               // the title replaces "Stock photo"
-  }).catch(function () {
-    /* Leave the stock opening as it is. */
-  });
+    heroImg.onerror = useStock;               // a missing upload falls back to the stock photo
+    heroImg.src = image;
+    heroImg.alt = text(home.heroAlt) || title;
+    setLine('heroNote', title);               // the title sits where "Stock photo" would
+  }).catch(useStock);
 
   /* Fill a section with the first `count` items, or a quiet message. */
   function fill(container, items, count, build, wrap) {

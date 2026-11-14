@@ -43,7 +43,7 @@
     if (length) pic.appendChild(el('span', { className: 'tc', textContent: length }));
     if (playable) {
       pic.appendChild(el('span', { className: 'play', 'aria-hidden': 'true' }, el('i', null, '▶'), 'Play film'));
-      pic.addEventListener('click', function () { openVideo(item.videoId, title); });
+      pic.addEventListener('click', function () { openVideo(item.videoId, title, pic); });
     }
 
     return el('div', { className: 'film' },
@@ -57,17 +57,23 @@
   /* ── Film player overlay ── */
   var overlay, player, opener;
 
+  /* While the player is open, the page behind it cannot be clicked or tabbed into. */
+  function setBackgroundInert(on) {
+    document.querySelectorAll('body > nav, body > main, body > footer').forEach(function (part) { part.inert = on; });
+  }
+
   function closeVideo() {
     if (!overlay || !overlay.classList.contains('open')) return;
     overlay.classList.remove('open');
     player.replaceChildren();               // removing the iframe stops playback
     document.body.classList.remove('locked');
+    setBackgroundInert(false);
     if (opener && opener.focus) opener.focus();
     opener = null;
   }
 
   function buildOverlay() {
-    var close = el('button', { type: 'button', className: 'btn-close', textContent: 'Close ✕' });
+    var close = el('button', { type: 'button', className: 'btn-close', 'aria-label': 'Close', textContent: 'Close ✕' });
     player = el('div', { className: 'player' });
     overlay = el('div', { className: 'overlay video', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Film player' }, close, player);
     close.addEventListener('click', closeVideo);
@@ -76,10 +82,10 @@
     document.body.appendChild(overlay);
   }
 
-  function openVideo(videoId, title) {
+  function openVideo(videoId, title, from) {
     if (!DF.isYouTubeId(videoId)) return;
     if (!overlay) buildOverlay();
-    opener = document.activeElement;
+    opener = from || document.activeElement;
 
     var frame = el('iframe', {
       src: 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0',
@@ -90,6 +96,7 @@
     player.replaceChildren(frame);
     overlay.classList.add('open');
     document.body.classList.add('locked');
+    setBackgroundInert(true);
     overlay.querySelector('.btn-close').focus();
   }
 
