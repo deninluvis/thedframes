@@ -25,7 +25,7 @@ collections:
             name: "heroTitle"
             widget: "string"
             required: false
-            hint: "Small faded text at the bottom right of the opening image, e.g. \"First light, Bluffers Park\". Only shown when you have uploaded your own image. Keep it short: it stays on one line and is cut off with \"…\" if it does not fit. Leave empty to show nothing."
+            hint: "Small faded text in the corner of the opening image (bottom right on computers, top right on phones), e.g. \"First light, Bluffers Park\". Only shown when you have uploaded your own image. Keep it short: it stays on one line and is cut off with \"…\" if it does not fit. Leave empty to show nothing."
           - label: "Opening Image Description"
             name: "heroAlt"
             widget: "string"

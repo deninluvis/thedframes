@@ -436,7 +436,10 @@ body.locked { overflow: hidden; }
   .section { padding-top: 4rem; padding-bottom: 4rem; }
   .page-top { padding-top: 7rem; }
   .hero .bar { flex-basis: 9vh; }
-  .title-wrap { padding-bottom: 2.4rem; }
+  .title-wrap { padding-bottom: 1.4rem; }
+  /* On phones the image note moves to the top of the image, so it never
+     sits between the name and the tagline. */
+  .img-note { top: .8rem; bottom: auto; }
   .btn-step { top: auto; bottom: .6rem; transform: none; }
   .overlay { padding-bottom: 4rem; }
 }
