@@ -19,6 +19,7 @@
     el: function (tag, props) {
       var node = document.createElement(tag);
       var key;
+      if (tag === 'img') node.draggable = false;   // photos cannot be dragged out of the page
       for (key in (props || {})) {
         if (props[key] === undefined || props[key] === null) continue;
         if (key === 'role' || key.indexOf('data-') === 0 || key.indexOf('aria-') === 0) node.setAttribute(key, props[key]);
@@ -126,6 +127,15 @@
     window.DF = DF;
     /* Shared so the About page can reuse the same request. */
     DF.site = DF.loadJSON('/content/site.json').catch(function () { return null; });
+
+    /* Save-protection: no right-click menu and no dragging on photos.
+       This stops casual saving; it cannot stop a screenshot. */
+    var PHOTO_AREAS = 'img, .frame, .pic, .shot, .portrait, .overlay.viewer';
+    var guard = function (e) {
+      if (e.target && e.target.closest && e.target.closest(PHOTO_AREAS)) e.preventDefault();
+    };
+    document.addEventListener('contextmenu', guard);
+    document.addEventListener('dragstart', guard);
 
     var start = function () {
       highlightNav();

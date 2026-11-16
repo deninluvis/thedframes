@@ -6,6 +6,20 @@ backend:
 media_folder: "uploads"
 public_folder: "/uploads"
 
+# Every photo uploaded through the CMS is shrunk before it is saved:
+# scaled down to fit within 2400 x 2400 pixels (never enlarged) and
+# converted to WebP, a much smaller format. File names are tidied too.
+media_libraries:
+  default:
+    config:
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 2400
+          height: 2400
+
 collections:
   # ───────────────────────── Home ─────────────────────────
   - name: "home"
@@ -20,7 +34,7 @@ collections:
             name: "heroImage"
             widget: "image"
             required: false
-            hint: "The big picture behind your name on the home page. Use a wide landscape photo, at least 2400px across; the top and bottom are cropped to a cinema-style strip. Leave empty to show the built-in stock photo."
+            hint: "The big picture behind your name on the home page. Use a wide landscape photo, at least 2400px across (larger photos are shrunk to 2400px automatically); the top and bottom are cropped to a cinema-style strip. Leave empty to show the built-in stock photo."
           - label: "Opening Image Title"
             name: "heroTitle"
             widget: "string"
@@ -95,7 +109,7 @@ collections:
                 widget: "list"
                 required: false
                 summary: "{{label}}"
-                hint: "The photos in this project's gallery, in the order shown. They are displayed uncropped, exactly as uploaded. For fast loading, export at about 2400px on the long edge."
+                hint: "The photos in this project's gallery, in the order shown. They are displayed uncropped. Upload full-size photos: each one is automatically shrunk to at most 2400px on its long edge so pages load fast."
                 fields:
                   - label: "Image"
                     name: "image"
