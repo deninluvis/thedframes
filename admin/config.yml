@@ -25,7 +25,7 @@ collections:
             name: "heroTitle"
             widget: "string"
             required: false
-            hint: "Small faded text in the corner of the opening image (bottom right on computers, top right on phones), e.g. \"First light, Bluffers Park\". Only shown when you have uploaded your own image. Keep it short: it stays on one line and is cut off with \"…\" if it does not fit. Leave empty to show nothing."
+            hint: "Small faded text at the top right of the opening image, e.g. \"First light, Bluffers Park\". Only shown when you have uploaded your own image. Keep it short: it stays on one line and is cut off with \"…\" if it does not fit. Leave empty to show nothing."
           - label: "Opening Image Description"
             name: "heroAlt"
             widget: "string"
@@ -40,7 +40,7 @@ collections:
             name: "tagline"
             widget: "string"
             required: false
-            hint: "One short sentence in the black bar under the opening image, e.g. \"Photographer by passion. Engineer by profession.\" Leave empty to hide it."
+            hint: "One short sentence shown directly under your name on the opening image, e.g. \"Photographer by passion. Engineer by profession.\" Leave empty to hide it."
 
   # ───────────────────────── Photography ─────────────────────────
   - name: "photos"
